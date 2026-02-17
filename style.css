@@ -2,7 +2,6 @@
     background: linear-gradient(135deg, #1e2433 0%, #252b3b 100%) !important;
 }
 
-/* SIDEBAR */
 [data-testid="stSidebar"] {
     background: rgba(26, 31, 45, 0.98) !important;
     border-right: 1px solid rgba(60, 65, 82, 0.5) !important;
@@ -16,7 +15,6 @@
     color: #e5e7eb !important;
 }
 
-/* BOTONES */
 .stButton > button {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     color: white !important;
@@ -40,7 +38,6 @@
     transform: translateY(-1px) scale(0.98) !important;
 }
 
-/* MENSAJES USUARIO */
 [data-testid="stChatMessage"][aria-label="user"] {
     background: linear-gradient(135deg, #374259 0%, #2d3548 100%) !important;
     border-radius: 16px !important;
@@ -59,7 +56,6 @@
     transform: translateX(-2px) !important;
 }
 
-/* MENSAJES ASISTENTE */
 [data-testid="stChatMessage"][aria-label="assistant"] {
     background: #2a303f !important;
     border-radius: 16px !important;
@@ -79,7 +75,6 @@
     transform: translateY(-2px) !important;
 }
 
-/* INPUTS DE TEXTO */
 .stTextInput > div > div > input,
 input[type="text"],
 input[type="password"],
@@ -109,7 +104,6 @@ input[type="password"]:focus {
     outline: none !important;
 }
 
-/* ALERTAS */
 .stAlert,
 [data-testid="stAlert"] {
     background: rgba(102, 126, 234, 0.15) !important;
@@ -118,7 +112,6 @@ input[type="password"]:focus {
     color: #e5e7eb !important;
 }
 
-/* BARRA INFERIOR - eliminar línea fea */
 [data-testid="stBottom"],
 [data-testid="stBottom"] > div,
 [data-testid="stBottom"] > div > div,
@@ -133,7 +126,6 @@ section[data-testid="stBottom"] > div {
     outline: none !important;
 }
 
-/* CHAT INPUT */
 [data-testid="stChatInput"] {
     border-radius: 16px !important;
     background: #2a303f !important;
@@ -160,11 +152,6 @@ section[data-testid="stBottom"] > div {
     color: #e5e7eb !important;
 }
 
-[data-testid="stChatInput"] textarea::placeholder {
-    color: #6b7280 !important;
-}
-
-/* BOTÓN ENVIAR */
 [data-testid="stChatInputSubmitButton"] button,
 [data-testid="stChatInput"] button {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -181,7 +168,6 @@ section[data-testid="stBottom"] > div {
     transform: scale(1.05) !important;
 }
 
-/* SCROLLBAR */
 ::-webkit-scrollbar { width: 8px !important; }
 ::-webkit-scrollbar-track { background: #1e2433 !important; }
 ::-webkit-scrollbar-thumb {
@@ -192,7 +178,6 @@ section[data-testid="stBottom"] > div {
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
 }
 
-/* TÍTULOS */
 h1, h2, h3 {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     -webkit-background-clip: text !important;
@@ -201,7 +186,6 @@ h1, h2, h3 {
     font-weight: 700 !important;
 }
 
-/* POPOVER */
 [data-testid="stPopover"],
 .stPopover {
     background: #2a303f !important;
@@ -209,7 +193,6 @@ h1, h2, h3 {
     border-radius: 12px !important;
 }
 
-/* ANIMACIÓN */
 @keyframes slideIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
