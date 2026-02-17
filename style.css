@@ -134,22 +134,19 @@ section[data-testid="stBottom"] > div {
     transition: all 0.3s ease !important;
 }
 
-[data-testid="stChatInput"] > div {
+[data-testid="stChatInput"] div,
+[data-testid="stChatInput"] textarea,
+[data-testid="stChatInput"] [data-testid="stChatInputTextArea"] {
+    background-color: transparent !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+    color: #e5e7eb !important;
 }
 
 [data-testid="stChatInput"]:focus-within {
     border-color: #667eea !important;
     box-shadow: 0 4px 25px rgba(102, 126, 234, 0.25) !important;
-}
-
-[data-testid="stChatInput"] textarea {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    color: #e5e7eb !important;
 }
 
 [data-testid="stChatInput"] textarea::placeholder {
