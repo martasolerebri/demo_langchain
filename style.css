@@ -129,6 +129,7 @@ section[data-testid="stBottom"] > div {
 [data-testid="stChatInput"] {
     border-radius: 16px !important;
     background: #2a303f !important;
+    border: 2px solid #3a4153 !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
     transition: all 0.3s ease !important;
 }
@@ -149,6 +150,10 @@ section[data-testid="stBottom"] > div {
     border: none !important;
     outline: none !important;
     color: #e5e7eb !important;
+}
+
+[data-testid="stChatInput"] textarea::placeholder {
+    color: #6b7280 !important;
 }
 
 [data-testid="stChatInputSubmitButton"] button,
