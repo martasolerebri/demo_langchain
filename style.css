@@ -272,3 +272,18 @@ h1, h2, h3 {
 [data-testid="stChatMessage"] {
     animation: slideIn 0.3s ease-out !important;
 }
+
+/* Eliminar línea encima del chat input */
+[data-testid="stBottom"],
+[data-testid="stBottom"] > div,
+[data-testid="stBottom"] > div > div,
+.stChatFloatingInputContainer,
+.stChatFloatingInputContainer > div,
+section[data-testid="stBottom"],
+section[data-testid="stBottom"] > div {
+    background: #1e2433 !important;
+    border: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
