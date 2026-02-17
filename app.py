@@ -33,8 +33,17 @@ with st.sidebar:
         st.rerun()
 
 if not google_api_key:
-    st.warning("Please enter your Google API Key in the sidebar to get started")
-    st.stop()
+    st.markdown("""
+    This agent is designed to answer your questions by autonomously searching the web and Wikipedia for the most accurate and up-to-date information.
+    
+    **What it can do:**
+    * **Web Search:** Uses DuckDuckGo to find real-time news, current events, and general web results.
+    * **Wikipedia Research:** Dives into Wikipedia to fetch detailed facts, summaries, and historical data.
+    * **Contextual Memory:** It remembers your chat history, so you can ask natural follow-up questions.
+
+    **To get started:**
+    Please enter your **Google API Key** in the sidebar.
+    """)
 
 @st.cache_resource
 def get_tools():
