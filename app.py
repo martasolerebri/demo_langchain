@@ -25,6 +25,7 @@ st.title("Agent")
 with st.sidebar:
     st.header("Configuration")
     google_api_key = st.text_input("Google API Key", type="password", help="Required to use Gemini.")
+    st.markdown("Get you key at [Google AI Studio](https://aistudio.google.com/).")
     st.divider()
     if st.button("Clear History"):
         st.session_state.messages = []
@@ -32,7 +33,7 @@ with st.sidebar:
         st.rerun()
 
 if not google_api_key:
-    st.warning("Please enter your Google API Key in the sidebar to get started.")
+    st.warning("Please enter your Google API Key in the sidebar to get started")
     st.stop()
 
 @st.cache_resource
