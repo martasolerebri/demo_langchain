@@ -108,9 +108,9 @@ for msg in st.session_state.messages:
 
 if user_input := st.chat_input("Ask me anything..."):
     st.session_state.messages.append({"role": "user", "content": user_input})
-    st.chat_message("user").write(user_input)
+    st.chat_message("user", avatar="👤").write(user_input)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="🤖"):
         with st.spinner("Thinking and using tools..."):
             response = agent_with_history.invoke(
                 {"input": user_input},
