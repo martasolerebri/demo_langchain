@@ -16,11 +16,11 @@ def cargar_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-st.set_page_config(page_title="Agent", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="AI Web Searcher", page_icon="🤖", layout="wide")
 
 cargar_css("style.css")
 
-st.title("Agent")
+st.title("AI Web Searcher")
 
 with st.sidebar:
     st.header("Configuration")
@@ -44,6 +44,7 @@ if not google_api_key:
     **To get started:**
     Please enter your **Google API Key** in the sidebar.
     """)
+    st.stop()
 
 @st.cache_resource
 def get_tools():
