@@ -105,11 +105,9 @@
 }
 
 .stTextInput > div > div > input,
-.stTextArea > div > div > textarea,
 input[type="text"],
 input[type="password"],
-input[type="email"],
-textarea {
+input[type="email"] {
     border-radius: 12px !important;
     border: 2px solid #3a4153 !important;
     padding: 0.75rem 1rem !important;
@@ -132,19 +130,15 @@ input[type="password"]:focus {
 }
 
 .stTextInput > div,
-.stTextInput > div > div,
-.stTextArea > div,
-.stTextArea > div > div {
+.stTextInput > div > div {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
 }
 
 .stTextInput > div > div > input:focus,
-.stTextArea > div > div > textarea:focus,
 input[type="text"]:focus,
-input[type="password"]:focus,
-textarea:focus {
+input[type="password"]:focus {
     border-color: #667eea !important;
     box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15) !important;
     outline: none !important;
@@ -153,14 +147,10 @@ textarea:focus {
 
 .stTextInput > div > div > input::before,
 .stTextInput > div > div > input::after,
-.stTextArea > div > div > textarea::before,
-.stTextArea > div > div > textarea::after,
 input[type="text"]::before,
 input[type="text"]::after,
 input[type="password"]::before,
-input[type="password"]::after,
-textarea::before,
-textarea::after {
+input[type="password"]::after {
     display: none !important;
     content: none !important;
 }
