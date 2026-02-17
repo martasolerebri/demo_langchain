@@ -42,6 +42,7 @@ if not google_api_key:
     * **Contextual Memory:** It remembers your chat history, so you can ask natural follow-up questions.
 
     **To get started:**
+                
     Please enter your **Google API Key** in the sidebar.
     """)
     st.stop()
