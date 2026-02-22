@@ -13,33 +13,39 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnableLambda
 
 def cargar_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    try:
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        pass # Fails gracefully if style.css is missing
 
-st.set_page_config(page_title="AI Web Searcher", page_icon="🤖", layout="wide")
+# 1. Updated Page Config for Movie Theme
+st.set_page_config(page_title="AI Movie Recommender", page_icon="🍿", layout="wide")
 
 cargar_css("style.css")
 
-st.title("AI Web Searcher")
+# 2. Updated Titles
+st.title("AI Movie Recommender & Searcher")
 
 with st.sidebar:
     st.header("Configuration")
     google_api_key = st.text_input("Google API Key", type="password", help="Required to use Gemini.")
-    st.markdown("Get you key at [Google AI Studio](https://aistudio.google.com/).")
+    st.markdown("Get your key at [Google AI Studio](https://aistudio.google.com/).")
     st.divider()
     if st.button("Clear History"):
         st.session_state.messages = []
         st.session_state.store = {}
         st.rerun()
 
+# 3. Updated Onboarding Text
 if not google_api_key:
     st.markdown("""
-    This agent is designed to answer your questions by autonomously searching the web and Wikipedia for the most accurate and up-to-date information.
+    This agent is a specialized **Cinema Expert** designed to recommend movies, look up cast and crew, and find the latest ratings.
     
     **What it can do:**
-    * **Web Search:** Uses DuckDuckGo to find real-time news, current events, and general web results.
-    * **Wikipedia Research:** Dives into Wikipedia to fetch detailed facts, summaries, and historical data.
-    * **Contextual Memory:** It remembers your chat history, so you can ask natural follow-up questions.
+    * **IMDb & Web Search:** Uses DuckDuckGo to search for movie ratings (like IMDb/Rotten Tomatoes), latest cinema news, and reviews.
+    * **Wikipedia Deep Dives:** Fetches detailed plot summaries, cast lists, and trivia from Wikipedia.
+    * **Tailored Recommendations:** Remembers your chat history to give you personalized movie suggestions based on your taste!
 
     **To get started:**
                 
@@ -78,8 +84,13 @@ def initialize_agent(api_key):
     llm = ChatGoogleGenerativeAI(model='gemini-2.5-flash', api_key=api_key)
     tools = get_tools()
     
+    # 4. Drastically updated System Prompt to force the Cinema Expert persona
     prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful assistant. Based on user query and the chat history, look for information using DuckDuckGo Search and Wikipedia and then give the final answer."),
+        ("system", "You are an enthusiastic and highly knowledgeable AI Movie Recommender and Cinema Expert. "
+                   "Based on the user's query and chat history, use the search tools to look up movie details, "
+                   "find IMDb or Rotten Tomatoes ratings via DuckDuckGo, or retrieve deep lore and cast details via Wikipedia. "
+                   "If the user asks for recommendations, provide a curated list of movies with short, spoiler-free "
+                   "synopses, their genres, and why they fit the user's request. Format your answers beautifully using markdown."),
         ("placeholder", "{history}"),
         ("human", "{input}"),
         ("placeholder", "{agent_scratchpad}"),
@@ -103,15 +114,18 @@ agent_with_history = initialize_agent(google_api_key)
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# 5. Themed Avatars
 for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+    avatar = "👤" if msg["role"] == "user" else "🎬"
+    st.chat_message(msg["role"], avatar=avatar).write(msg["content"])
 
-if user_input := st.chat_input("Ask me anything..."):
+if user_input := st.chat_input("Ask for a movie recommendation or search for a film..."):
     st.session_state.messages.append({"role": "user", "content": user_input})
     st.chat_message("user", avatar="👤").write(user_input)
 
-    with st.chat_message("assistant", avatar="🤖"):
-        with st.spinner("Thinking and using tools..."):
+    with st.chat_message("assistant", avatar="🎬"):
+        # 6. Themed Spinner
+        with st.spinner("Grabbing the popcorn and searching..."):
             response = agent_with_history.invoke(
                 {"input": user_input},
                 config={"configurable": {"session_id": "default_session"}}

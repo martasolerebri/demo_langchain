@@ -2,7 +2,6 @@ streamlit
 langchain
 langchain-core
 langchain-community
-langchain-classic
 langchain-google-genai
 duckduckgo-search
 wikipedia
