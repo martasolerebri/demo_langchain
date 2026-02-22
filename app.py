@@ -17,15 +17,13 @@ def cargar_css(file_name):
         with open(file_name) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     except FileNotFoundError:
-        pass # Fails gracefully if style.css is missing
+        pass 
 
-# 1. Updated Page Config for Movie Theme
 st.set_page_config(page_title="AI Movie Recommender", page_icon="🍿", layout="wide")
 
 cargar_css("style.css")
 
-# 2. Updated Titles
-st.title("AI Movie Recommender & Searcher")
+st.title("AI Movie Recommender")
 
 with st.sidebar:
     st.header("Configuration")
@@ -37,7 +35,6 @@ with st.sidebar:
         st.session_state.store = {}
         st.rerun()
 
-# 3. Updated Onboarding Text
 if not google_api_key:
     st.markdown("""
     This agent is a specialized **Cinema Expert** designed to recommend movies, look up cast and crew, and find the latest ratings.
@@ -84,7 +81,6 @@ def initialize_agent(api_key):
     llm = ChatGoogleGenerativeAI(model='gemini-2.5-flash', api_key=api_key)
     tools = get_tools()
     
-    # 4. Drastically updated System Prompt to force the Cinema Expert persona
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are an enthusiastic and highly knowledgeable AI Movie Recommender and Cinema Expert. "
                    "Based on the user's query and chat history, use the search tools to look up movie details, "
@@ -114,7 +110,6 @@ agent_with_history = initialize_agent(google_api_key)
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 5. Themed Avatars
 for msg in st.session_state.messages:
     avatar = "👤" if msg["role"] == "user" else "🎬"
     st.chat_message(msg["role"], avatar=avatar).write(msg["content"])
@@ -124,7 +119,6 @@ if user_input := st.chat_input("Ask for a movie recommendation or search for a f
     st.chat_message("user", avatar="👤").write(user_input)
 
     with st.chat_message("assistant", avatar="🎬"):
-        # 6. Themed Spinner
         with st.spinner("Grabbing the popcorn and searching..."):
             response = agent_with_history.invoke(
                 {"input": user_input},
