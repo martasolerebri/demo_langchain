@@ -1,1 +1,1 @@
-# demo_rag
+# demo_langchain
